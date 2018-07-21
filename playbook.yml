@@ -1,0 +1,19 @@
+---
+- name: pretasks
+  hosts: all
+
+  remote_user: root
+  gather_facts: false
+  tasks:
+    - name: install python
+      raw: apt-get install python-minimal aptitude -y
+
+- name: nginx servers
+  hosts: all
+  remote_user: root
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+
